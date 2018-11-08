@@ -31,14 +31,18 @@ public class WordSearch{
      */
     public String toString(){
 		String output = "";
-		for (int x = 0; x < data.length; x++){
-			for (int y = 0; y < data[x].length; y++){
+		for (int y = data[0].length; y > data[0].length; y--){
+			for (int x = 0; x < data.length; x++){
 				output += data[x][y];
 			}
 			output += "\n";
 		}
 		return output;
     }
+
+	public void editor(int x, int y, char inp){
+		this.data[x][y] = inp;
+	}
 
 
     /**Attempts to add a given word to the specified position of the WordGrid.
