@@ -1,5 +1,7 @@
 public class WordSearch{
     private char[][]data;
+	private int rowLength;
+	private int coLength;
 
     /**Initialize the grid to the size specified
 
@@ -14,6 +16,8 @@ public class WordSearch{
 				data[x][y] = '_';
 			}
 		}
+		rowLength = rows;
+		coLength = cols;
     }
 
     /**Set all values in the WordSearch to underscores'_'*/
@@ -31,14 +35,33 @@ public class WordSearch{
      */
     public String toString(){
 		String output = "";
-		for (int y = data[0].length; y > data[0].length; y--){
+		for (int y = coLength - 1; y >= data[0].length; y--){
+			System.out.println(data[0].length);
+			System.out.println(y);
 			for (int x = 0; x < data.length; x++){
 				output += data[x][y];
 			}
 			output += "\n";
 		}
-		return output;
+
+		String daa = "asd";
+		daa += 'a';
+		return daa;
     }
+
+	public String toStringDebug(){
+		String output = "";
+		System.out.println(rowLength - 1);
+		System.out.println(coLength);
+		System.out.println("");
+		for (int y = rowLength - 1; y >= 0; y--){
+			for (int x = 0; x < data.length; x++){
+			output += data[x][y];
+			}
+			output += "\n";
+		}
+		return output;
+	}
 
 	public void editor(int x, int y, char inp){
 		this.data[x][y] = inp;
