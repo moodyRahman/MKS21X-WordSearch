@@ -72,6 +72,17 @@ public class WordSearch{
 
      */
     public boolean addWordHorizontal(String word,int row, int col){
+		if (col + word.length() > coLength || col < 0){
+			return false;
+		}
+		if (row >= rowLength - 1 || row < 0){
+			return false;
+		}
+		int temp = 0;
+		for (int x = col; x < word.length() + col; x++){
+			data[x][row] = word.charAt(temp);
+			temp++;
+		}
 		return true;
     }
 
@@ -89,6 +100,17 @@ public class WordSearch{
 
      */
     public boolean addWordVertical(String word,int row, int col){
+		if (col >= coLength - 1 || col < 0){
+			return false;
+		}
+		if (row + word.length() > rowLength || row < 0){
+			return false;
+		}
+		int temp = 0;
+		for (int y = row; y < word.length() + row; y++){
+			data[col][y] = word.charAt(temp);
+			temp++;
+		}
 		return true;
     }
 
