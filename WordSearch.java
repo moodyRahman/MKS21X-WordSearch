@@ -33,27 +33,8 @@ public class WordSearch{
      *@return a String with each character separated by spaces, and rows
      *separated by newlines.
      */
-    public String toString(){
+	public String toString(){
 		String output = "";
-		for (int y = coLength - 1; y >= data[0].length; y--){
-			System.out.println(data[0].length);
-			System.out.println(y);
-			for (int x = 0; x < data.length; x++){
-				output += data[x][y];
-			}
-			output += "\n";
-		}
-
-		String daa = "asd";
-		daa += 'a';
-		return daa;
-    }
-
-	public String toStringDebug(){
-		String output = "";
-		System.out.println(rowLength - 1);
-		System.out.println(coLength);
-		System.out.println("");
 		for (int y = rowLength - 1; y >= 0; y--){
 			for (int x = 0; x < data.length; x++){
 			output += data[x][y];
@@ -65,6 +46,15 @@ public class WordSearch{
 
 	public void editor(int x, int y, char inp){
 		this.data[x][y] = inp;
+	}
+
+	public void altPrint(){
+		for (int x = 0; x < data.length; x++){
+			for (int y = 0; y < data[x].length; y++){
+				System.out.print(data[x][y] + ", ");
+			}
+			System.out.print("\n");
+		}
 	}
 
 
