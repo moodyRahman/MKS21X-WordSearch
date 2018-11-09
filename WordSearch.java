@@ -114,4 +114,20 @@ public class WordSearch{
 		return true;
     }
 
+    public boolean addWordDiagonal(String word, int row, int col){
+        if (col + word.length() > coLength || col < 0){
+			return false;
+		}
+		if (row + word.length() > rowLength || row < 0){
+			return false;
+		}
+        int temp = 0;
+        int coltemp = col;
+        for (int y = row; y < word.length() + row; y++){
+			data[coltemp][y] = word.charAt(temp);
+			temp++;
+            coltemp++;
+		}
+        return true;
+    }
 }
