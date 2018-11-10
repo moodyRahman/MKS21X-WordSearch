@@ -68,12 +68,9 @@ public class WordSearch{
 // ──────────────────────────────
 
      public boolean addWordHorizontal(String word,int row, int col){
- 		if (col + word.length() > coLength || col < 0){
- 			return false;
- 		}
- 		if (row >= rowLength - 1 || row < 0){
- 			return false;
- 		}
+         if (!horizCheck(word, row, col)){
+             return false;
+         }
  		int temp = 0;
  		for (int x = col; x < word.length() + col; x++){
  			data[x][row] = word.charAt(temp);
@@ -92,13 +89,9 @@ public class WordSearch{
      }
 
      public boolean addWordHorizontalBackwards(String word,int row, int col){
- 		if (col + word.length() > coLength || col < 0){
- 			return false;
- 		}
- 		if (row >= rowLength - 1 || row < 0){
- 			return false;
- 		}
-
+        if (!horizCheck(word, row, col)){
+            return false;
+        }
  		int temp = 0;
         word = reverseString(word);
  		for (int x = col; x < word.length() + col; x++){
@@ -153,8 +146,38 @@ public class WordSearch{
     // ┴ ┴─┴┘─┴┘  └┴┘└─┘┴└──┴┘└─┘
     // ──────────────────────────────
 
-                                  
-   public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
-       return true;
-   }
+    private boolean diagCheck(String word, int row, int col){
+        if (col + word.length() > coLength || col < 0){
+			return false;
+		}
+		if (row + word.length() > rowLength || row < 0){
+			return false;
+		}
+        return true;
+    }
+
+    private boolean vertCheck(String word, int row, int col){
+        if (col >= coLength - 1 || col < 0){
+			return false;
+		}
+		if (row + word.length() > rowLength || row < 0){
+			return false;
+		}
+        return true;
+    }
+
+    private boolean horizCheck(String word, int row, int col){
+        if (col + word.length() > coLength || col < 0){
+ 			return false;
+ 		}
+ 		if (row >= rowLength - 1 || row < 0){
+ 			return false;
+ 		}
+        return true;
+    }
+
+
+    public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+        return true;
+    }
 }
