@@ -95,6 +95,32 @@ public class WordSearch{
         return true;
      }
 
+     private static String reverseString(String str){
+         if(str.isEmpty()){
+             return str;
+         }
+         else{
+             return reverseString(str.substring(1))+str.charAt(0);
+         }
+     }
+
+     public boolean addWordHorizontalBackwards(String word,int row, int col){
+ 		if (col + word.length() > coLength || col < 0){
+ 			return false;
+ 		}
+ 		if (row >= rowLength - 1 || row < 0){
+ 			return false;
+ 		}
+
+ 		int temp = 0;
+        word = reverseString(word);
+ 		for (int x = col; x < word.length() + col; x++){
+ 			data[x][row] = word.charAt(temp);
+ 			temp++;
+ 		}
+        return true;
+     }
+
 
    /**Attempts to add a given word to the specified position of the WordGrid.
      *The word is added from top to bottom, must fit on the WordGrid, and must
