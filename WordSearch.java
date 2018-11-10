@@ -178,6 +178,19 @@ public class WordSearch{
 
 
     public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+        if (rowIncrement == 0 && colIncrement == 0){
+            return false;
+        }
+        if (rowIncrement == 0){
+            if (!vertCheck(word, row, col)){
+                return false;
+            }
+        }
+        if (colIncrement == 0){
+            if (!horizCheck(word, row, col)){
+                return false;
+            }
+        }
         return true;
     }
 }
