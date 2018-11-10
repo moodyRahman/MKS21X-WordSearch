@@ -57,6 +57,16 @@ public class WordSearch{
 	}
 
 
+
+// ──────────────────────────────
+// ┌─┐┬─┐┌─┐┌┬┐┌─┐┌┬┐┬ ┬┌─┐┌─┐┌─┐
+// ├─┘├┬┘│ │ │ │ │ │ └┬┘├─┘├┤ └─┐
+// ┴  ┴└─└─┘ ┴ └─┘ ┴  ┴ ┴  └─┘└─┘
+// ┌─┐┌┬┐┌┬┐  ┬ ┬┌─┐┬─┐┌┬┐┌─┐
+// ├─┤ ││ ││  ││││ │├┬┘ ││└─┐
+// ┴ ┴─┴┘─┴┘  └┴┘└─┘┴└──┴┘└─┘
+// ──────────────────────────────
+
      public boolean addWordHorizontal(String word,int row, int col){
  		if (col + word.length() > coLength || col < 0){
  			return false;
@@ -133,6 +143,17 @@ public class WordSearch{
     }
 
 
+
+    // ──────────────────────────────
+    // ┌─┐┬┌┐┌┌─┐┬
+    // ├┤ ││││├─┤│
+    // └  ┴┘└┘┴ ┴┴─┘
+    // ┌─┐┌┬┐┌┬┐  ┬ ┬┌─┐┬─┐┌┬┐┌─┐
+    // ├─┤ ││ ││  ││││ │├┬┘ ││└─┐
+    // ┴ ┴─┴┘─┴┘  └┴┘└─┘┴└──┴┘└─┘
+    // ──────────────────────────────
+
+                                  
    public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
        return true;
    }
