@@ -199,6 +199,18 @@ public class WordSearch{
         if (!checker(word, row, col, rowIncrement, colIncrement)){
             return false;
         }
+
+        try {
+            int temp = 0;
+            int coltemp = col;
+            for (int y = row; y < word.length() + row;y =  y += rowIncrement){
+    			data[coltemp][y] = word.charAt(temp);
+    			temp++;
+                coltemp += colIncrement;
+    		}
+        } catch (ArrayIndexOutOfBoundsException e){
+            return false;
+        }
         return true;
     }
 }
