@@ -177,7 +177,7 @@ public class WordSearch{
     }
 
 
-    public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+    private boolean checker(String word, int col, int row, int rowIncrement, int colIncrement){
         if (rowIncrement == 0 && colIncrement == 0){
             return false;
         }
@@ -190,6 +190,14 @@ public class WordSearch{
             if (!horizCheck(word, row, col)){
                 return false;
             }
+        }
+        return true;
+    }
+
+
+    public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+        if (!checker(word, row, col, rowIncrement, colIncrement)){
+            return false;
         }
         return true;
     }
