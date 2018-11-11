@@ -188,10 +188,10 @@ public static void main(String[] args) {
                 System.exit(1);
             }
         } catch (NumberFormatException e){
-            System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed> <String \"y/n\" colution?> \" ");
+            System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed>");
             System.exit(1);
         }
-        System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed> <String \"y/n\" colution?> \" ");
+        System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed> ");
 }
 
 }
