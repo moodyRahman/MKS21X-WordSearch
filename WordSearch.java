@@ -9,7 +9,7 @@ private Random randgen;
 private int rowLength;
 private int coLength;
 private ArrayList<String>wordsToAdd = new ArrayList<String>();
-private ArrayList<String>wordsAdded;
+private ArrayList<String>wordsAdded = new ArrayList<String>();
 
 
 public WordSearch (int rows,int cols, String filename){
@@ -146,17 +146,23 @@ public void addAll(){
         int rinc;
         int cinc;
         int added = 0;
+        Collections.shuffle(wordsToAdd, randgen);
         for (int x = 0; x < wordsToAdd.size(); x++) {
+                rinc = (randgen.nextInt() % 2);
+                cinc = (randgen.nextInt() % 2);
+                while ((rinc == 0) && (cinc == 0)) {
+                        rinc = (randgen.nextInt() % 2);
+                        cinc = (randgen.nextInt() % 2);
+                }
                 String currword = wordsToAdd.get(x);
                 boolean isAdded = false;
                 int count = 100;
                 while (isAdded == false && count > 0) {
                         xcoor = Math.abs(randgen.nextInt() % rowLength);
                         ycoor = Math.abs(randgen.nextInt() % coLength);
-                        rinc = (randgen.nextInt() % 2);
-                        cinc = (randgen.nextInt() % 2);
                         if (isAdded = addWord(currword, ycoor, xcoor, rinc, cinc)) {
                                 added++;
+                                wordsAdded.add(currword);
                         }
                         count--;
                 }
