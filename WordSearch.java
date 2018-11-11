@@ -11,7 +11,7 @@ public class WordSearch{
     private ArrayList<String>wordsAdded;
 
 
-    public WordSearch(int rows,int cols){
+    public WordSearch(int rows,int cols, String filename){
 		data = new char[cols][rows];
 		for (int x = 0; x < data.length; x++){
 			for (int y = 0; y < data[x].length; y++){
@@ -226,4 +226,5 @@ public class WordSearch{
         }
         return true;
     }
+
 }
