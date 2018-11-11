@@ -14,11 +14,14 @@ public class WordSearch{
 
     public WordSearch (int rows,int cols, String filename){
 		consruct(rows, cols, filename);
-        randgen = new Random();
+        Random seedgen = new Random();
+        seed = seedgen.nextInt();
+        randgen = new Random(seed);
     }
 
     public WordSearch (int rows,int cols, String filename, int seed){
 		consruct(rows, cols, filename);
+        this.seed = seed;
         randgen = new Random(seed);
     }
 
@@ -63,11 +66,15 @@ public class WordSearch{
 	public String toString(){
 		String output = "";
 		for (int y = rowLength - 1; y >= 0; y--){
+            output += "|";
 			for (int x = 0; x < data.length; x++){
 			output += data[x][y];
 			}
+            output += "|";
 			output += "\n";
 		}
+        output += "your seed: ";
+        output += seed;
 		return output;
 	}
 
@@ -83,134 +90,6 @@ public class WordSearch{
 			System.out.print("\n");
 		}
 	}
-
-
-
-// ──────────────────────────────
-// ┌─┐┬─┐┌─┐┌┬┐┌─┐┌┬┐┬ ┬┌─┐┌─┐┌─┐
-// ├─┘├┬┘│ │ │ │ │ │ └┬┘├─┘├┤ └─┐
-// ┴  ┴└─└─┘ ┴ └─┘ ┴  ┴ ┴  └─┘└─┘
-// ┌─┐┌┬┐┌┬┐  ┬ ┬┌─┐┬─┐┌┬┐┌─┐
-// ├─┤ ││ ││  ││││ │├┬┘ ││└─┐
-// ┴ ┴─┴┘─┴┘  └┴┘└─┘┴└──┴┘└─┘
-// ──────────────────────────────
-
-     public boolean addWordHorizontal(String word,int row, int col){
-         if (!horizCheck(word, row, col)){
-             return false;
-         }
- 		int temp = 0;
- 		for (int x = col; x < word.length() + col; x++){
- 			data[x][row] = word.charAt(temp);
- 			temp++;
- 		}
-        return true;
-     }
-
-     private static String reverseString(String str){
-         if(str.isEmpty()){
-             return str;
-         }
-         else{
-             return reverseString(str.substring(1))+str.charAt(0);
-         }
-     }
-
-     public boolean addWordHorizontalBackwards(String word,int row, int col){
-        if (!horizCheck(word, row, col)){
-            return false;
-        }
- 		int temp = 0;
-        word = reverseString(word);
- 		for (int x = col; x < word.length() + col; x++){
- 			data[x][row] = word.charAt(temp);
- 			temp++;
- 		}
-        return true;
-     }
-
-
-    public boolean addWordVertical(String word,int row, int col){
-		if (col >= coLength - 1 || col < 0){
-			return false;
-		}
-		if (row + word.length() > rowLength || row < 0){
-			return false;
-		}
-		int temp = 0;
-		for (int y = row; y < word.length() + row; y++){
-			data[col][y] = word.charAt(temp);
-			temp++;
-		}
-		return true;
-    }
-
-
-    public boolean addWordDiagonal(String word, int row, int col){
-        if (col + word.length() > coLength || col < 0){
-			return false;
-		}
-		if (row + word.length() > rowLength || row < 0){
-			return false;
-		}
-        int temp = 0;
-        int coltemp = col;
-        for (int y = row; y < word.length() + row; y++){
-			data[coltemp][y] = word.charAt(temp);
-			temp++;
-            coltemp++;
-		}
-        return true;
-    }
-
-
-    private boolean diagCheck(String word, int row, int col){
-        if (col + word.length() > coLength || col < 0){
-			return false;
-		}
-		if (row + word.length() > rowLength || row < 0){
-			return false;
-		}
-        return true;
-    }
-
-    private boolean vertCheck(String word, int row, int col){
-        if (col >= coLength - 1 || col < 0){
-			return false;
-		}
-		if (row + word.length() > rowLength || row < 0){
-			return false;
-		}
-        return true;
-    }
-
-    private boolean horizCheck(String word, int row, int col){
-        if (col + word.length() > coLength || col < 0){
- 			return false;
- 		}
- 		if (row >= rowLength - 1 || row < 0){
- 			return false;
- 		}
-        return true;
-    }
-
-
-    private boolean checker(String word, int col, int row, int rowIncrement, int colIncrement){
-        if (rowIncrement == 0 && colIncrement == 0){
-            return false;
-        }
-        if (rowIncrement == 0){
-            if (!vertCheck(word, row, col)){
-                return false;
-            }
-        }
-        if (colIncrement == 0){
-            if (!horizCheck(word, row, col)){
-                return false;
-            }
-        }
-        return true;
-    }
 
     // ──────────────────────────────
     // ┌─┐┬┌┐┌┌─┐┬
@@ -280,7 +159,6 @@ public class WordSearch{
                     added++;
                 }
                 count--;
-                System.out.println(added);
             }
         }
     }
