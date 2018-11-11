@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.lang.Math.*;
 
 public class WordSearch{
     private char[][]data;
@@ -13,6 +14,7 @@ public class WordSearch{
 
     public WordSearch (int rows,int cols, String filename){
 		consruct(rows, cols, filename);
+        randgen = new Random();
     }
 
     public WordSearch (int rows,int cols, String filename, int seed){
@@ -220,6 +222,9 @@ public class WordSearch{
     // ──────────────────────────────
 
     private boolean wordchecker(String word,int row, int col, int rowIncrement, int colIncrement){
+        if (rowIncrement == 0 && colIncrement == 0){
+            return false;
+        }
         try {
             int x = col;
             int y = row;
@@ -256,10 +261,27 @@ public class WordSearch{
     // ├┬┘├─┤│││ │││ ││││  ├─┤ ││ ││├┤ ├┬┘└─┐
     // ┴└─┴ ┴┘└┘─┴┘└─┘┴ ┴  ┴ ┴─┴┘─┴┘└─┘┴└─└─┘
 
-    public void addRandom(){
+    public void addAll(){
+        int xcoor;
+        int ycoor;
+        int rinc;
+        int cinc;
+        int added = 0;
         for (int x = 0; x < wordsToAdd.size(); x++){
-            System.out.println(randgen);
-            System.out.println(wordsToAdd.get(x));
+            String currword = wordsToAdd.get(x);
+            boolean isAdded = false;
+            int count = 100;
+            while (isAdded == false && count > 0){
+                xcoor = Math.abs(randgen.nextInt() % rowLength);
+                ycoor = Math.abs(randgen.nextInt() % coLength);
+                rinc = (randgen.nextInt() % 2);
+                cinc = (randgen.nextInt() % 2);
+                if (isAdded = addWord(currword, ycoor, xcoor, rinc, cinc)){
+                    added++;
+                }
+                count--;
+                System.out.println(added);
+            }
         }
     }
 
