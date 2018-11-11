@@ -43,7 +43,7 @@ private void consruct(int rows,int cols, String filename){
         }
 }
 
-public void reader(String fileName) throws FileNotFoundException {
+private void reader(String fileName) throws FileNotFoundException {
         File f = new File(fileName);//can combine
         Scanner in = new Scanner(f);//into one line
         while (in.hasNextLine()) {
@@ -63,7 +63,16 @@ private void clear(){
 }
 
 
+private String bankGen(){
+    String output = "words: ";
+    for (int x = 0; x < wordsAdded.size(); x++){
+        output += wordsAdded.get(x) + ", ";
+    }
+    return output;
+}
+
 public String toString(){
+        addAll();
         String output = "";
         for (int y = rowLength - 1; y >= 0; y--) {
                 output += "|";
@@ -74,21 +83,13 @@ public String toString(){
                 output += "\n";
         }
         output += "your seed: ";
-        output += seed;
+        output += seed + "\n";
+        output += bankGen();
         return output;
 }
 
 public void editor(int x, int y, char inp){
         this.data[x][y] = inp;
-}
-
-public void altPrint(){
-        for (int x = 0; x < data.length; x++) {
-                for (int y = 0; y < data[x].length; y++) {
-                        System.out.print(data[x][y] + ", ");
-                }
-                System.out.print("\n");
-        }
 }
 
 // ──────────────────────────────
@@ -122,7 +123,7 @@ private boolean wordchecker(String word,int row, int col, int rowIncrement, int 
 }
 
 
-public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+private boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
         if (!wordchecker(word, row, col, rowIncrement, colIncrement)) {
                 return false;
         }
@@ -140,7 +141,7 @@ public boolean addWord(String word,int row, int col, int rowIncrement, int colIn
 // ├┬┘├─┤│││ │││ ││││  ├─┤ ││ ││├┤ ├┬┘└─┐
 // ┴└─┴ ┴┘└┘─┴┘└─┘┴ ┴  ┴ ┴─┴┘─┴┘└─┘┴└─└─┘
 
-public void addAll(){
+private void addAll(){
         int xcoor;
         int ycoor;
         int rinc;
