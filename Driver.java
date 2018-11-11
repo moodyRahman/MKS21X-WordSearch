@@ -1,7 +1,7 @@
 public class Driver{
 	public static void main(String[] args) {
-		WordSearch a = new WordSearch(10,10);
-		WordSearch b = new WordSearch(10, 10);
+		WordSearch a = new WordSearch(10,10, "");
+		WordSearch b = new WordSearch(10, 10, "");
 		a.editor(0, 0, 'm');
 		a.editor(9, 9, 'a');
 
@@ -32,7 +32,7 @@ public class Driver{
 		System.out.println();
 		System.out.println();
 
-		WordSearch d = new WordSearch(10, 10);
+		WordSearch d = new WordSearch(10, 10, "");
 		System.out.println(d);
 		d.addWord("osbfucate", 8, 0, 0, 1);
 		d.addWord("catos", 4, 5, 1, -1);
