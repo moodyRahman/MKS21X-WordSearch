@@ -195,21 +195,36 @@ public class WordSearch{
     }
 
 
-    public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
-        if (!checker(word, row, col, rowIncrement, colIncrement)){
-            return false;
-        }
-
+    public boolean wordchecker(String word,int row, int col, int rowIncrement, int colIncrement){
         try {
-            int temp = 0;
-            int coltemp = col;
-            for (int y = row; y < word.length() + row;y =  y += rowIncrement){
-    			data[coltemp][y] = word.charAt(temp);
-    			temp++;
-                coltemp += colIncrement;
-    		}
+            int x = col;
+            int y = row;
+            for (int i = 0; i < word.length(); i++){
+                char letter = word.charAt(i);
+                if (data[x][y] != letter && data[x][y] != '_'){
+                    return false;
+                }
+                x += colIncrement;
+                y += rowIncrement;
+            }
+            return true;
         } catch (ArrayIndexOutOfBoundsException e){
             return false;
+        }
+    }
+
+
+    public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+        if (!wordchecker(word, row, col, rowIncrement, colIncrement)){
+            return false;
+        }
+        int x = col;
+        int y = row;
+        for (int i = 0; i < word.length(); i++){
+            char letter = word.charAt(i);
+            data[x][y] = letter;
+            x += colIncrement;
+            y += rowIncrement;
         }
         return true;
     }
