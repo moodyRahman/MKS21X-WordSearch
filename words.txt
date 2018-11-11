@@ -3,3 +3,6 @@ tangible
 axis
 lucid
 illicit
+arbitrary
+sparge
+cultivate
