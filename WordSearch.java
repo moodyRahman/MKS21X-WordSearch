@@ -136,16 +136,6 @@ public class WordSearch{
     }
 
 
-
-    // ──────────────────────────────
-    // ┌─┐┬┌┐┌┌─┐┬
-    // ├┤ ││││├─┤│
-    // └  ┴┘└┘┴ ┴┴─┘
-    // ┌─┐┌┬┐┌┬┐  ┬ ┬┌─┐┬─┐┌┬┐┌─┐
-    // ├─┤ ││ ││  ││││ │├┬┘ ││└─┐
-    // ┴ ┴─┴┘─┴┘  └┴┘└─┘┴└──┴┘└─┘
-    // ──────────────────────────────
-
     private boolean diagCheck(String word, int row, int col){
         if (col + word.length() > coLength || col < 0){
 			return false;
@@ -194,6 +184,14 @@ public class WordSearch{
         return true;
     }
 
+    // ──────────────────────────────
+    // ┌─┐┬┌┐┌┌─┐┬
+    // ├┤ ││││├─┤│
+    // └  ┴┘└┘┴ ┴┴─┘
+    // ┌─┐┌┬┐┌┬┐  ┬ ┬┌─┐┬─┐┌┬┐┌─┐
+    // ├─┤ ││ ││  ││││ │├┬┘ ││└─┐
+    // ┴ ┴─┴┘─┴┘  └┴┘└─┘┴└──┴┘└─┘
+    // ──────────────────────────────
 
     private boolean wordchecker(String word,int row, int col, int rowIncrement, int colIncrement){
         try {
