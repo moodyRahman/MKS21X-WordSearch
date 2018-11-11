@@ -195,7 +195,7 @@ public class WordSearch{
     }
 
 
-    public boolean wordchecker(String word,int row, int col, int rowIncrement, int colIncrement){
+    private boolean wordchecker(String word,int row, int col, int rowIncrement, int colIncrement){
         try {
             int x = col;
             int y = row;
