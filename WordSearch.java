@@ -12,7 +12,16 @@ public class WordSearch{
 
 
     public WordSearch (int rows,int cols, String filename){
-		data = new char[cols][rows];
+		consruct(rows, cols, filename);
+    }
+
+    public WordSearch (int rows,int cols, String filename, int seed){
+		consruct(rows, cols, filename);
+        randgen = new Random(seed);
+    }
+
+    private void consruct(int rows,int cols, String filename){
+        data = new char[cols][rows];
 		for (int x = 0; x < data.length; x++){
 			for (int y = 0; y < data[x].length; y++){
 				data[x][y] = '_';
@@ -242,6 +251,16 @@ public class WordSearch{
             y += rowIncrement;
         }
         return true;
+    }
+    // ┬─┐┌─┐┌┐┌┌┬┐┌─┐┌┬┐  ┌─┐┌┬┐┌┬┐┌─┐┬─┐┌─┐
+    // ├┬┘├─┤│││ │││ ││││  ├─┤ ││ ││├┤ ├┬┘└─┐
+    // ┴└─┴ ┴┘└┘─┴┘└─┘┴ ┴  ┴ ┴─┴┘─┴┘└─┘┴└─└─┘
+
+    public void addRandom(){
+        for (int x = 0; x < wordsToAdd.size(); x++){
+            System.out.println(randgen);
+            System.out.println(wordsToAdd.get(x));
+        }
     }
 
 }
