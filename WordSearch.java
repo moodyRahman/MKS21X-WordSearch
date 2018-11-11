@@ -7,11 +7,11 @@ public class WordSearch{
     private Random randgen;
 	private int rowLength;
 	private int coLength;
-    private ArrayList<String>wordsToAdd;
+    private ArrayList<String>wordsToAdd = new ArrayList<String>();
     private ArrayList<String>wordsAdded;
 
 
-    public WordSearch(int rows,int cols, String filename){
+    public WordSearch (int rows,int cols, String filename){
 		data = new char[cols][rows];
 		for (int x = 0; x < data.length; x++){
 			for (int y = 0; y < data[x].length; y++){
@@ -20,6 +20,23 @@ public class WordSearch{
 		}
 		rowLength = rows;
 		coLength = cols;
+
+        try{
+            reader(filename);
+        } catch (FileNotFoundException e){
+            System.out.println("File not found: " + filename);
+            System.exit(1);
+        }
+    }
+
+    public void reader(String fileName) throws FileNotFoundException{
+        File f = new File(fileName);//can combine
+        Scanner in = new Scanner(f);//into one line
+        while (in.hasNextLine()) {
+            String a = in.nextLine();
+            wordsToAdd.add(a);
+        }
+        in.close();
     }
 
 
