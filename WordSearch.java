@@ -75,9 +75,9 @@ public String toString(){
         addAll();
         String output = "";
         for (int y = rowLength - 1; y >= 0; y--) {
-                output += "|";
+                output += "| ";
                 for (int x = 0; x < data.length; x++) {
-                        output += data[x][y];
+                        output += data[x][y] + " ";
                 }
                 output += "|";
                 output += "\n";
