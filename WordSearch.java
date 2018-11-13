@@ -172,24 +172,24 @@ private void addAll(){
 
 public static void main(String[] args) {
         try {
-            if (args.length == 3) {
-                int rows = Integer.parseInt(args[0]);
-                int cols = Integer.parseInt(args[1]);
-                WordSearch out = new WordSearch(rows, cols, args[2]);
-                System.out.println(out);
+                if (args.length == 3) {
+                        int rows = Integer.parseInt(args[0]);
+                        int cols = Integer.parseInt(args[1]);
+                        WordSearch out = new WordSearch(rows, cols, args[2]);
+                        System.out.println(out);
+                        System.exit(1);
+                }
+                if (args.length == 4) {
+                        int rows = Integer.parseInt(args[0]);
+                        int cols = Integer.parseInt(args[1]);
+                        int seed = Integer.parseInt(args[3]);
+                        WordSearch out = new WordSearch(rows, cols, args[2], seed);
+                        System.out.println(out);
+                        System.exit(1);
+                }
+        } catch (NumberFormatException e) {
+                System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed>");
                 System.exit(1);
-            }
-            if (args.length == 4) {
-                int rows = Integer.parseInt(args[0]);
-                int cols = Integer.parseInt(args[1]);
-                int seed = Integer.parseInt(args[3]);
-                WordSearch out = new WordSearch(rows, cols, args[2], seed);
-                System.out.println(out);
-                System.exit(1);
-            }
-        } catch (NumberFormatException e){
-            System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed>");
-            System.exit(1);
         }
         System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed> ");
 }
