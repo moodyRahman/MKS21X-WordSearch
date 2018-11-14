@@ -26,10 +26,8 @@ pikachu
 raichu
 sandshrew
 sandslash
-nidoran♀
 nidorina
 nidoqueen
-nidoran♂
 nidorino
 nidoking
 clefairy
@@ -80,7 +78,6 @@ slowpoke
 slowbro
 magnemite
 magneton
-farfetch'd
 doduo
 dodrio
 seel
@@ -119,7 +116,6 @@ goldeen
 seaking
 staryu
 starmie
-mr. mime
 scyther
 jynx
 electabuzz
