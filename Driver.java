@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Driver{
 	public static void main(String[] args) {
-		WordSearch a = new WordSearch(15, 15, "words.txt", 500);
+		WordSearch a = new WordSearch(10, 10, "words.txt", "aaa");
 		System.out.println(a);
 
 		// Random r = new Random();
