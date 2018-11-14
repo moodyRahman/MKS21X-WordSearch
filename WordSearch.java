@@ -33,10 +33,6 @@ public WordSearch (int rows,int cols, String filename, int seed, String key){
 }
 
 private void consruct(int rows,int cols, String filename){
-        if (rows < 0 || cols < 0) {
-            System.out.println("dimensions have to be positive integers");
-            System.exit(1);
-        }
         data = new char[cols][rows];
         for (int x = 0; x < data.length; x++) {
                 for (int y = 0; y < data[x].length; y++) {
@@ -194,11 +190,19 @@ private void addAll(){
         }
 }
 
+public static void properDim(int row, int col){
+        if (row <= 0 || col <= 0) {
+                System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed [OPTIONAL GIVEN seed] <key>");
+                System.exit(1);
+        }
+}
+
 public static void main(String[] args) {
         try {
                 if (args.length == 3) {
                         int rows = Integer.parseInt(args[0]);
                         int cols = Integer.parseInt(args[1]);
+                        WordSearch.properDim(rows, cols);
                         WordSearch out = new WordSearch(rows, cols, args[2], "false");
                         System.out.println(out);
                         System.exit(1);
@@ -207,6 +211,7 @@ public static void main(String[] args) {
                         int rows = Integer.parseInt(args[0]);
                         int cols = Integer.parseInt(args[1]);
                         int seed = Integer.parseInt(args[3]);
+                        WordSearch.properDim(rows, cols);
                         WordSearch out = new WordSearch(rows, cols, args[2], seed, "false");
                         System.out.println(out);
                         System.exit(1);
@@ -215,15 +220,16 @@ public static void main(String[] args) {
                         int rows = Integer.parseInt(args[0]);
                         int cols = Integer.parseInt(args[1]);
                         int seed = Integer.parseInt(args[3]);
+                        WordSearch.properDim(rows, cols);
                         WordSearch out = new WordSearch(rows, cols, args[2], seed, args[4]);
                         System.out.println(out);
                         System.exit(1);
                 }
         } catch (NumberFormatException e) {
-                System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed ");
+                System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed [OPTIONAL GIVEN seed] <key>");
                 System.exit(1);
         }
-        System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed> ");
+        System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed [OPTIONAL GIVEN seed] <key>");
 }
 
 }
