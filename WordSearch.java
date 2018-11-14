@@ -10,19 +10,26 @@ private int rowLength;
 private int coLength;
 private ArrayList<String>wordsToAdd = new ArrayList<String>();
 private ArrayList<String>wordsAdded = new ArrayList<String>();
+private boolean printKey = false;
 
 
-public WordSearch (int rows,int cols, String filename){
+public WordSearch (int rows,int cols, String filename, String key){
         consruct(rows, cols, filename);
         Random seedgen = new Random();
         seed = seedgen.nextInt();
         randgen = new Random(seed);
+        if (key.equals("key")) {
+                printKey = true;
+        }
 }
 
-public WordSearch (int rows,int cols, String filename, int seed){
+public WordSearch (int rows,int cols, String filename, int seed, String key){
         consruct(rows, cols, filename);
         this.seed = seed;
         randgen = new Random(seed);
+        if (key.equals("key")) {
+                printKey = true;
+        }
 }
 
 private void consruct(int rows,int cols, String filename){
@@ -71,7 +78,7 @@ private String bankGen(){
         return output;
 }
 
-public String toString(){
+private String stringGen(){
         addAll();
         String output = "";
         for (int y = rowLength - 1; y >= 0; y--) {
@@ -86,6 +93,33 @@ public String toString(){
         output += seed + "\n";
         output += bankGen();
         return output;
+}
+
+private char randLetter(){
+        String init = "abcdefghijklmnopqrstuvwxyz";
+        int pos = randgen.nextInt();
+        pos = pos % 13;
+        pos = pos + 13;
+        return init.charAt(pos);
+}
+
+public String toString(){
+        if (printKey) {
+                return stringGen();
+        }
+        else {
+                String curr = stringGen();
+                String output = "";
+                for (int x = 0; x < curr.length(); x++) {
+                        if (curr.charAt(x) == '_') {
+                                output += randLetter();
+                        }
+                        else {
+                                output += curr.charAt(x);
+                        }
+                }
+                return output;
+        }
 }
 
 public void editor(int x, int y, char inp){
@@ -175,7 +209,7 @@ public static void main(String[] args) {
                 if (args.length == 3) {
                         int rows = Integer.parseInt(args[0]);
                         int cols = Integer.parseInt(args[1]);
-                        WordSearch out = new WordSearch(rows, cols, args[2]);
+                        WordSearch out = new WordSearch(rows, cols, args[2], "false");
                         System.out.println(out);
                         System.exit(1);
                 }
@@ -183,12 +217,20 @@ public static void main(String[] args) {
                         int rows = Integer.parseInt(args[0]);
                         int cols = Integer.parseInt(args[1]);
                         int seed = Integer.parseInt(args[3]);
-                        WordSearch out = new WordSearch(rows, cols, args[2], seed);
+                        WordSearch out = new WordSearch(rows, cols, args[2], seed, "false");
+                        System.out.println(out);
+                        System.exit(1);
+                }
+                if (args.length == 5) {
+                        int rows = Integer.parseInt(args[0]);
+                        int cols = Integer.parseInt(args[1]);
+                        int seed = Integer.parseInt(args[3]);
+                        WordSearch out = new WordSearch(rows, cols, args[2], seed, args[4]);
                         System.out.println(out);
                         System.exit(1);
                 }
         } catch (NumberFormatException e) {
-                System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed>");
+                System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed ");
                 System.exit(1);
         }
         System.out.println("run program as \"java WordSearch <int row length> <int column length> <String filename> [OPTIONAL] <int seed> ");
