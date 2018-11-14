@@ -33,6 +33,10 @@ public WordSearch (int rows,int cols, String filename, int seed, String key){
 }
 
 private void consruct(int rows,int cols, String filename){
+        if (rows < 0 || cols < 0) {
+            System.out.println("dimensions have to be positive integers");
+            System.exit(1);
+        }
         data = new char[cols][rows];
         for (int x = 0; x < data.length; x++) {
                 for (int y = 0; y < data[x].length; y++) {
@@ -59,16 +63,6 @@ private void reader(String fileName) throws FileNotFoundException {
         }
         in.close();
 }
-
-
-private void clear(){
-        for (int x = 0; x < data.length; x++) {
-                for (int y = 0; y < data[x].length; y++) {
-                        this.data[x][y] = '_';
-                }
-        }
-}
-
 
 private String bankGen(){
         String output = "words: ";
@@ -120,10 +114,6 @@ public String toString(){
                 }
                 return output;
         }
-}
-
-public void editor(int x, int y, char inp){
-        this.data[x][y] = inp;
 }
 
 // ──────────────────────────────
