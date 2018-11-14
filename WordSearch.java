@@ -55,7 +55,7 @@ private void reader(String fileName) throws FileNotFoundException {
         Scanner in = new Scanner(f);//into one line
         while (in.hasNextLine()) {
                 String a = in.nextLine();
-                wordsToAdd.add(a);
+                wordsToAdd.add(a.toUpperCase());
         }
         in.close();
 }
@@ -86,7 +86,7 @@ private String stringGen(){
 }
 
 private char randLetter(){
-        String init = "abcdefghijklmnopqrstuvwxyz";
+        String init = "ABCDEFGHIJKLMNOPQRSTUVWQYZ";
         int pos = randgen.nextInt();
         pos = pos % 13;
         pos = pos + 13;
