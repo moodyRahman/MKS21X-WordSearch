@@ -61,7 +61,7 @@ private void reader(String fileName) throws FileNotFoundException {
 }
 
 private String bankGen(){
-        String output = "words: ";
+        String output = "Words: ";
         for (int x = 0; x < wordsAdded.size(); x++) {
                 output += wordsAdded.get(x) + ", ";
         }
@@ -79,9 +79,9 @@ private String stringGen(){
                 output += "|";
                 output += "\n";
         }
-        output += "your seed: ";
-        output += seed + "\n";
         output += bankGen();
+        output += "(seed: ";
+        output += seed + ")\n";
         return output;
 }
 
