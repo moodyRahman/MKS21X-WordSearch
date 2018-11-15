@@ -95,25 +95,25 @@ private char randLetter(){
 }
 
 private String underScoreReplace(char toAdd){
-    String curr = stringGen();
-    String output = "";
-    for (int x = 0; x < curr.length(); x++) {
-            if (curr.charAt(x) == '_') {
-                    output += toAdd;
-            }
-            else {
-                    output += curr.charAt(x);
-            }
-    }
-    return output;
+        String curr = stringGen();
+        String output = "";
+        for (int x = 0; x < curr.length(); x++) {
+                if (curr.charAt(x) == '_') {
+                        output += toAdd;
+                }
+                else {
+                        output += curr.charAt(x);
+                }
+        }
+        return output;
 }
 
 public String toString(){
         if (printKey) {
-            return underScoreReplace(' ');
+                return underScoreReplace(' ');
         }
         else {
-            return underScoreReplace(randLetter());
+                return underScoreReplace(randLetter());
         }
 }
 
