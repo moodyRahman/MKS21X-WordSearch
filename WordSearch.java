@@ -17,6 +17,7 @@ public WordSearch (int rows,int cols, String filename, String key){
         consruct(rows, cols, filename);
         Random seedgen = new Random();
         seed = seedgen.nextInt();
+        seed = Math.abs(seed %100001);
         randgen = new Random(seed);
         if (key.equals("key")) {
                 printKey = true;
@@ -93,22 +94,26 @@ private char randLetter(){
         return init.charAt(pos);
 }
 
+private String underScoreReplace(char toAdd){
+    String curr = stringGen();
+    String output = "";
+    for (int x = 0; x < curr.length(); x++) {
+            if (curr.charAt(x) == '_') {
+                    output += toAdd;
+            }
+            else {
+                    output += curr.charAt(x);
+            }
+    }
+    return output;
+}
+
 public String toString(){
         if (printKey) {
-                return stringGen();
+            return underScoreReplace(' ');
         }
         else {
-                String curr = stringGen();
-                String output = "";
-                for (int x = 0; x < curr.length(); x++) {
-                        if (curr.charAt(x) == '_') {
-                                output += randLetter();
-                        }
-                        else {
-                                output += curr.charAt(x);
-                        }
-                }
-                return output;
+            return underScoreReplace(randLetter());
         }
 }
 
