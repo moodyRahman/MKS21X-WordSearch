@@ -28,7 +28,7 @@ public WordSearch (int rows,int cols, String filename, int seed, String key){
         consruct(rows, cols, filename);
         this.seed = seed;
         if (seed < 0 || seed > 10000) {
-                System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed [OPTIONAL GIVEN seed] <key>");
+                System.out.println("seed out of range: must be between 0 and 10000");
                 System.exit(1);
         }
         randgen = new Random(seed);
