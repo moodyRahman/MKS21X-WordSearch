@@ -27,6 +27,10 @@ public WordSearch (int rows,int cols, String filename, String key){
 public WordSearch (int rows,int cols, String filename, int seed, String key){
         consruct(rows, cols, filename);
         this.seed = seed;
+        if (seed < 0 || seed > 10000){
+            System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed [OPTIONAL GIVEN seed] <key>");
+            System.exit(1);
+        }
         randgen = new Random(seed);
         if (key.equals("key")) {
                 printKey = true;
