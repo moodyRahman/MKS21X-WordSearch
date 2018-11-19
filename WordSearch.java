@@ -197,7 +197,7 @@ private void addAll(){
                 String currword = wordsToAdd.get(x);
                 boolean isAdded = false;
                 int count = 100;
-                while (isAdded == false && count > 0) {
+                while (!isAdded && count > 0) {
                         xcoor = Math.abs(randgen.nextInt() % rowLength);
                         ycoor = Math.abs(randgen.nextInt() % coLength);
                         if (isAdded = addWord(currword, ycoor, xcoor, rinc, cinc)) {
