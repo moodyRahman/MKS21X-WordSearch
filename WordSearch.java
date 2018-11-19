@@ -98,27 +98,37 @@ private char randLetter(){
         return init.charAt(pos);
 }
 
-private String underScoreReplace(char toAdd){
-        String curr = stringGen();
+public String toString(){
         String output = "";
-        for (int x = 0; x < curr.length(); x++) {
-                if (curr.charAt(x) == '_') {
-                        output += toAdd;
+        if (printKey){
+            String curr = stringGen();
+            for (int x = 0; x < curr.length(); x++){
+                if (curr.charAt(x) == '_'){
+                    output += " ";
                 }
                 else {
-                        output += curr.charAt(x);
+                    output += curr.charAt(x);
                 }
-        }
-        return output;
-}
-
-public String toString(){
-        if (printKey) {
-                return underScoreReplace(' ');
+            }
         }
         else {
-                return underScoreReplace(randLetter());
+            String curr = stringGen();
+            for (int x = 0; x < curr.length(); x++){
+                if (curr.charAt(x) == '_'){
+                    output += randLetter();
+                }
+                else {
+                    output += curr.charAt(x);
+                }
+            }
         }
+        return output;
+        // if (printKey) {
+        //         return underScoreReplace(' ');
+        // }
+        // else {
+        //         return underScoreReplace(randLetter());
+        // }
 }
 
 // ──────────────────────────────
