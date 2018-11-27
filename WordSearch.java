@@ -100,27 +100,27 @@ private char randLetter(){
 
 public String toString(){
         String output = "";
-        if (printKey){
-            String curr = stringGen();
-            for (int x = 0; x < curr.length(); x++){
-                if (curr.charAt(x) == '_'){
-                    output += " ";
+        if (printKey) {
+                String curr = stringGen();
+                for (int x = 0; x < curr.length(); x++) {
+                        if (curr.charAt(x) == '_') {
+                                output += " ";
+                        }
+                        else {
+                                output += curr.charAt(x);
+                        }
                 }
-                else {
-                    output += curr.charAt(x);
-                }
-            }
         }
         else {
-            String curr = stringGen();
-            for (int x = 0; x < curr.length(); x++){
-                if (curr.charAt(x) == '_'){
-                    output += randLetter();
+                String curr = stringGen();
+                for (int x = 0; x < curr.length(); x++) {
+                        if (curr.charAt(x) == '_') {
+                                output += randLetter();
+                        }
+                        else {
+                                output += curr.charAt(x);
+                        }
                 }
-                else {
-                    output += curr.charAt(x);
-                }
-            }
         }
         return output;
         // if (printKey) {
