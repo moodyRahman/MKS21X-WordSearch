@@ -251,4 +251,8 @@ public static void main(String[] args) {
         System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed [OPTIONAL GIVEN seed] <key>");
 }
 
+public void doof(){
+        System.out.println("AAAAAAAAAAAAAAAAAa");
+}
+
 }
