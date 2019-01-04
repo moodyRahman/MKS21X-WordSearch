@@ -247,6 +247,7 @@ public static void main(String[] args) {
         } catch (NumberFormatException e) {
                 System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed [OPTIONAL GIVEN seed] <key>");
                 System.exit(1);
+                System.out.println("BBBBBBBBBBBBBBBBBBB");
         }
         System.out.println("run program as \"java WordSearch rowlength colheight wordfile [OPTIONAL] seed [OPTIONAL GIVEN seed] <key>");
 }
